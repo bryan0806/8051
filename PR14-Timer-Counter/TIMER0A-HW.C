@@ -9,7 +9,7 @@ char Count ;	//定義字元資料為Count
 main()
 {
  P0=Count=0 ;	//LED全暗
- TMOD=0x10 ;	//設定Timer0為16位元計時器
+ TMOD=0x10 ;	//設定Timer1為16位元計時器
  TH0=(0xffff-100000)/256;	//TH0=0xD8
  TL0=(0xffff-100000)%256;	//TL0=0xEF
  EA=1 ;		//致能中斷功能
@@ -17,7 +17,7 @@ main()
  TR1=1 ;	//計時器0開始計時
  for(;;) ;	//等待計時中斷
 }
- void timer1(void) interrupt 3
+ void timer1(void) interrupt 3  //使用中斷一
 {
  Count++ ;	//Count=Count+1,累增一
  P0=Count ;	//輸出至LED顯示
